@@ -160,7 +160,7 @@ services:
     restart: always
     
   judger:
-    image: ccr.ccs.tencentyun.com/lpoj/judger
+    image: registry.cn-hangzhou.aliyuncs.com/rgf/renoj
     depends_on: 
       - judgerserver 
     command: >

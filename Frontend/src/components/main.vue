@@ -7,9 +7,9 @@
       <el-row :gutter="10">
         <acrank></acrank>
       </el-row>
-      <el-row :gutter="10">
+      <!-- <el-row :gutter="10">
         <topuser></topuser>
-      </el-row>
+      </el-row> -->
       <el-row :gutter="10">
         <ojmessage></ojmessage>
       </el-row>
@@ -25,18 +25,18 @@
           <el-tab-pane :label="label.des" >
             <description></description>
           </el-tab-pane>
-          <el-tab-pane :label="label.rank" :lazy="true">
+          <!-- <el-tab-pane :label="label.rank" :lazy="true">
             <rankchart></rankchart>
-          </el-tab-pane>
-          <el-tab-pane :label="label.rule" :lazy="true">
+          </el-tab-pane> -->·
+          <!-- <el-tab-pane :label="label.rule" :lazy="true">
             <ratingrule></ratingrule>
-          </el-tab-pane>
+          </el-tab-pane> -->
         </el-tabs>
       </el-row>
      
-      <el-row>
+      <!-- <el-row>
         <contestmini></contestmini>
-      </el-row>
+      </el-row> -->
     </el-col>
   </el-row>
 </template>

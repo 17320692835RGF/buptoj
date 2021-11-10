@@ -978,7 +978,7 @@ def judge(id, code, lang, problem, contest, username, submittime, contestproblem
                 # specialjudge，如果spj.cpp存在，则判定为特判问题
                 if os.path.isfile("./ProblemData/%s/spj.cpp" %problem):
                     GlobalVar.logger.info("Begin to special judge!!")
-                    isspj = " (This test case is Special Judge) "
+                    isspj = ""
                     r = specialjudge(problem,"./ProblemData/%s/%s.in" %(problem, filename), "./ProblemData/%s/%s.out" % (problem, filename), GlobalVar.judgername+"temp.out")
                     if r == 256: result = -3
                     elif r == 0: result = 0
@@ -986,7 +986,7 @@ def judge(id, code, lang, problem, contest, username, submittime, contestproblem
 
                     if os.path.isfile("./spjmsg.txt"):
                         tmsg = open("./spjmsg.txt","r",encoding='utf-8')
-                        templatemsg = tmsg.read()
+                        isspj = tmsg.read()
                         tmsg.close()
 
                 else:

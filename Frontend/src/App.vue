@@ -16,7 +16,7 @@
       <el-menu-item index="/statue">
         <i class="el-icon-tickets"></i>Status
       </el-menu-item>
-      <el-menu-item index="/contest">
+      <!-- <el-menu-item index="/contest">
         <i class="el-icon-bell"></i>Contest
       </el-menu-item>
       <el-menu-item index="/rank">
@@ -27,7 +27,7 @@
       </el-menu-item>
       <el-menu-item index="/todolist">
         <i class="el-icon-s-promotion"></i>TodoList
-      </el-menu-item>
+      </el-menu-item> -->
 
       <el-button round
                  id="button"
@@ -79,7 +79,7 @@
       <router-view id="route"></router-view>
     </transition>
 
-    <div class="footer">
+    <!-- <div class="footer">
       <p>
         Powered by
         <a href="https://github.com/Linzecong/LPOJ"
@@ -99,7 +99,7 @@
           </a>
         </span>
       </p>
-    </div>
+    </div> -->
   </div>
 </template>
 

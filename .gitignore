@@ -7,8 +7,6 @@ Judger/*.c
 Judger/*out
 Judger/*.log
 Judger/*.out
-*.in
-*.out
 *.log
 Judger/output/libjudger.so
 *.zip

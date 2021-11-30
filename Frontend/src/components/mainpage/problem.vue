@@ -4,7 +4,7 @@
       <el-card shadow="always">
         <el-switch style="float: right;"
                    v-model="islpoj"
-                   active-text="LPOJ"
+                   active-text="BUPT"
                    inactive-text="All"
                    @change="statuechange"></el-switch>
         <el-pagination @size-change="handleSizeChange"

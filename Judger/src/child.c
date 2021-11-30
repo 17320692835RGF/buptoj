@@ -42,26 +42,26 @@ void child_process(FILE *log_fp, struct config *_config) {
         }
     }
 
-    // set memory limit
-    // if memory_limit_check_only == 0, we only check memory usage number, because setrlimit(maxrss) will cause some crash issues
-    if (_config->memory_limit_check_only == 0) {
-        if (_config->max_memory != UNLIMITED) {
-            struct rlimit max_memory;
-            max_memory.rlim_cur = max_memory.rlim_max = (rlim_t) (_config->max_memory) * 2;
-            if (setrlimit(RLIMIT_AS, &max_memory) != 0) {
-                CHILD_ERROR_EXIT(SETRLIMIT_FAILED);
-            }
-        }
-    }
+    // // set memory limit
+    // // if memory_limit_check_only == 0, we only check memory usage number, because setrlimit(maxrss) will cause some crash issues
+    // if (_config->memory_limit_check_only == 0) {
+    //     if (_config->max_memory != UNLIMITED) {
+    //         struct rlimit max_memory;
+    //         max_memory.rlim_cur = max_memory.rlim_max = (rlim_t) (_config->max_memory) * 2;
+    //         if (setrlimit(RLIMIT_AS, &max_memory) != 0) {
+    //             CHILD_ERROR_EXIT(SETRLIMIT_FAILED);
+    //         }
+    //     }
+    // }
 
     // set cpu time limit (in seconds)
-    if (_config->max_cpu_time != UNLIMITED) {
-        struct rlimit max_cpu_time;
-        max_cpu_time.rlim_cur = max_cpu_time.rlim_max = (rlim_t) ((_config->max_cpu_time + 1000) / 1000);
-        if (setrlimit(RLIMIT_CPU, &max_cpu_time) != 0) {
-            CHILD_ERROR_EXIT(SETRLIMIT_FAILED);
-        }
-    }
+    // if (_config->max_cpu_time != UNLIMITED) {
+    //     struct rlimit max_cpu_time;
+    //     max_cpu_time.rlim_cur = max_cpu_time.rlim_max = (rlim_t) ((_config->max_cpu_time + 1000) / 1000);
+    //     if (setrlimit(RLIMIT_CPU, &max_cpu_time) != 0) {
+    //         CHILD_ERROR_EXIT(SETRLIMIT_FAILED);
+    //     }
+    // }
 
     // set max process number limit
     if (_config->max_process_number != UNLIMITED) {
@@ -135,8 +135,8 @@ void child_process(FILE *log_fp, struct config *_config) {
     if (_config->uid != -1 && setuid(_config->uid) == -1) {
         CHILD_ERROR_EXIT(SETUID_FAILED);
     }
-
-    // load seccomp
+    printf("jwazl seccomp");
+    //load seccomp
     if (_config->seccomp_rule_name != NULL) {
         if (strcmp("c_cpp", _config->seccomp_rule_name) == 0) {
             if (c_cpp_seccomp_rules(_config) != SUCCESS) {
@@ -154,7 +154,6 @@ void child_process(FILE *log_fp, struct config *_config) {
             CHILD_ERROR_EXIT(LOAD_SECCOMP_FAILED);
         }
     }
-
     execve(_config->exe_path, _config->args, _config->env);
     CHILD_ERROR_EXIT(EXECVE_FAILED);
 }

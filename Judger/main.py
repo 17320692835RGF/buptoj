@@ -548,11 +548,11 @@ def compilePython2(id,code,judgername,problem):
     return True
 
 def compilePython3(id,code,judgername,problem):
-    wo = minganci(code)
-    if wo != "0":
-        Controller.compileError(id,problem,"Your code has sensitive words "+wo)
-        GlobalVar.statue = True
-        return False
+    # wo = minganci(code)
+    # if wo != "0":
+    #     Controller.compileError(id,problem,"Your code has sensitive words "+wo)
+    #     GlobalVar.statue = True
+    #     return False
     file = open("%s.py" % judgername, "w",encoding='utf-8')
     # file.write("import sys\nblacklist = ['importlib','traceback','os']\nfor mod in blacklist:\n    i = __import__(mod)\n    sys.modules[mod] = None\ndel __builtins__.__dict__['eval']\ndel __builtins__.__dict__['exec']\ndel __builtins__.__dict__['locals']\ndel __builtins__.__dict__['open']\n" +code)
     file.write(code)
@@ -730,7 +730,7 @@ def judge(id, code, lang, problem, contest, username, submittime, contestproblem
                 code = templatefile.read() + '\n' + code
                 templatefile.close()
 
-            if compilePython3(id,code,GlobalVar.judgername,problem) == False: 
+            if compilePython3(id,code,GlobalVar.judgername,problem) == False:
                 return
         
         elif lang == "Python2": 
@@ -878,7 +878,6 @@ def judge(id, code, lang, problem, contest, username, submittime, contestproblem
                 Controller.compileError(id,problem,"Unknow Language!")
                 GlobalVar.statue = True
                 return
-                    
 
             GlobalVar.logger.info(str(ret))
       

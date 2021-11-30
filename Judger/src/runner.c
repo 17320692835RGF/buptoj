@@ -19,7 +19,9 @@
 #include "child.h"
 #include "logger.h"
 
-void init_result(struct result *_result) {
+void 
+
+(struct result *_result) {
     _result->result = _result->error = SUCCESS;
     _result->cpu_time = _result->real_time = _result->signal = _result->exit_code = 0;
     _result->memory = 0;
